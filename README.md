@@ -30,31 +30,63 @@ CAIS_M_LangGraph/
 ## Requisitos
 
 - Python 3.10 o superior.
-- Una clave de API de Google para ejecutar el ejemplo con Gemini.
+- Una clave de API de Google Gemini para ejecutar el ejemplo con Gemini.
 
 ## Instalación
 
-Desde la raíz del proyecto, crea y activa un entorno virtual:
+### Opción A: sin entorno virtual (así se hizo en esta prueba)
 
+**Windows:**
+```powershell
+python -m pip install --upgrade pip
+pip install langgraph langchain-google-genai python-dotenv
+pip freeze > requirements.txt
+```
+
+**macOS / Linux:**
+```bash
+python3 -m pip install --upgrade pip
+pip3 install langgraph langchain-google-genai python-dotenv
+pip3 freeze > requirements.txt
+```
+
+> **Nota:** en esta prueba las dependencias se instalaron sin entorno virtual,
+> por lo que el `requirements.txt` incluido puede contener paquetes
+> adicionales ya presentes en el sistema.
+
+### Opción B: con entorno virtual (recomendado para un entorno limpio)
+
+**Windows:**
 ```powershell
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1
 python -m pip install --upgrade pip
-pip install -r requirements.txt
-pip install python-dotenv
+pip install langgraph langchain-google-genai python-dotenv
+pip freeze > requirements.txt
 ```
+> Si `Activate.ps1` da error de permisos, corre primero:
+> ```powershell
+> Set-ExecutionPolicy -Scope Process -ExecutionPolicy RemoteSigned
+> ```
 
-En Linux o macOS:
-
+**macOS / Linux:**
 ```bash
-python -m venv .venv
+python3 -m venv .venv
 source .venv/bin/activate
-python -m pip install --upgrade pip
-pip install -r requirements.txt
-pip install python-dotenv
+python3 -m pip install --upgrade pip
+pip3 install langgraph langchain-google-genai python-dotenv
+pip3 freeze > requirements.txt
 ```
 
-`python-dotenv` se instala aparte porque el script LLM lo utiliza, pero todavía no está incluido en `requirements.txt`.
+Para desactivar el entorno virtual en cualquier sistema:
+```bash
+deactivate
+```
+
+Para recrear el entorno más adelante a partir de `requirements.txt`:
+```bash
+pip install -r requirements.txt
+```
 
 ## Configuración
 
@@ -118,3 +150,6 @@ El script carga la variable desde `.env`, usa el modelo `gemini-3.6-flash` y sol
 ![Evidencia de ejecución3](docs/img/evidencia3.png)
 
 
+## Autor
+
+- [Julian Camilo Lopez Barrero](https://github.com/JulianLopez11)
